@@ -3,7 +3,7 @@ let result_div = document.querySelector('#result');
 const max = 11;
 let result;
 const chance = 3;
-let msg;
+let msg = '';
 
 btn.addEventListener('click', promptDialog);
 document.addEventListener('DOMContentLoaded', setRandomNum);
@@ -25,8 +25,8 @@ function promptDialog(e) {
     let count = 0;
     let promptNum = prompt('1. Please enter your guess number between 1 and 10 \n 2. You have 3 chances to guess the number!');
     count++;
-    //alert(result);
-
+    promptNum = parseInt(promptNum);
+    
     while(count < 3){
         if(promptNum > result) {
             promptNum = prompt(`
@@ -38,21 +38,18 @@ function promptDialog(e) {
             1. Currect answer is greater
             2. You have ${chance - count} chance(s)
             3. Please guess the number again!`);
-        }
-        else {
+        } else if(promptNum == result){
             msg = 'Hurray you win';         
-            break;
-        } 
+            result_div.className = 'success';          
+        }
         count++;       
     }
-    
+
     if(promptNum != result){
         msg = 'You Lose!!!, Please start game again';
         result_div.className = 'error';
-        
-    } else {        
-        result_div.className = 'success';      
     }
+
     alert(msg);
     result_div.innerHTML = msg;
     e.preventDefault();
