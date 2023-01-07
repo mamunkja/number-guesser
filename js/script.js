@@ -25,7 +25,7 @@ function promptDialog(e) {
     let count = 0;
     let promptNum = prompt('1. Please enter your guess number between 1 and 10 \n 2. You have 3 chances to guess the number!');
     count++;
-    alert(result);
+    //alert(result);
 
     while(count < 3){
         if(promptNum > result) {
